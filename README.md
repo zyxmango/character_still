@@ -71,7 +71,7 @@ FastAPI（REST + WebSocket）+ 串行任务队列
 ## 3. 项目结构
 
 ```
-character_agent/
+character_still/
 ├── backend/
 │   ├── server.py                  # FastAPI 入口：REST + WebSocket + 前端静态文件
 │   ├── tools.py                   # 8 个确定性工具函数（生成 / 出图 / 修图 / 评估 / 导出）
