@@ -1,0 +1,292 @@
+@use './variables.scss';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #app {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--surface-3); background-clip: content-box; }
+
+/* 通用工具类 */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-20 { gap: 20px; }
+.hidden { display: none !important; }
+
+/* 文字工具类 */
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.text-accent { color: var(--accent); }
+.text-primary { color: var(--primary-light); }
+.text-error { color: var(--error); }
+.text-success { color: var(--success); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+
+/* 卡片基础样式（精炼版：圆角10px，双层阴影，弱化金色装饰线）*/
+.app-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* 卡片标题（精炼版：字距1px，◆装饰只用在标题）*/
+.app-card-title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.app-card-title::before {
+  content: '◆';
+  font-size: 10px;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+/* 页面头部 */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--primary-soft);
+  border: 1px solid rgba(200, 65, 44, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+.page-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* 按钮行：主操作右对齐，尺寸统一放大 */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 20px 0 4px;
+}
+
+.btn-row .el-button {
+  height: 40px;
+  padding: 0 28px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+
+.btn-row .el-button--primary {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(200, 65, 44, 0.28);
+}
+
+.btn-row .el-button--primary:hover {
+  box-shadow: 0 2px 18px rgba(200, 65, 44, 0.4);
+}
+
+/* 提示文字 */
+.hint-text {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-dim);
+}
+
+.empty-state .icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-state .text {
+  font-size: 14px;
+}
+
+/* 进度条动画 */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 工作区容器（全宽工作台，最大 1600px 居中）*/
+.ws-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px 32px 48px;
+}
+
+@media (max-width: 768px) {
+  .ws-container { padding: 20px 16px 40px; }
+}
+
+/* 瀑布流布局（纯 CSS column-count，无额外依赖）*/
+.masonry {
+  column-gap: 12px;
+  column-count: 2;
+}
+@media (min-width: 768px) { .masonry { column-count: 3; } }
+@media (min-width: 1024px) { .masonry { column-count: 4; } }
+@media (min-width: 1536px) { .masonry { column-count: 5; } }
+
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+/* 工作区背景氛围 */
+.workspace {
+  flex: 1;
+  overflow-y: auto;
+  background-image:
+    radial-gradient(ellipse at top right, rgba(201, 169, 97, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(200, 65, 44, 0.025) 0%, transparent 50%);
+}
+
+/* Element Plus 深色覆盖 */
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select__wrapper {
+  background-color: var(--bg) !important;
+  box-shadow: 0 0 0 1px var(--border) inset !important;
+}
+
+.el-input__wrapper:hover,
+.el-select__wrapper:hover {
+  box-shadow: 0 0 0 1px var(--border-light) inset !important;
+}
+
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--primary) inset, 0 0 0 3px rgba(200, 65, 44, 0.12) !important;
+}
+
+.el-input__inner,
+.el-textarea__inner {
+  color: var(--text) !important;
+}
+
+.el-input__inner::placeholder,
+.el-textarea__inner::placeholder {
+  color: var(--text-dim) !important;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--primary);
+  --el-button-border-color: var(--primary);
+  --el-button-hover-bg-color: var(--primary-light);
+  --el-button-hover-border-color: var(--primary-light);
+  --el-button-active-bg-color: var(--primary-dark);
+  --el-button-active-border-color: var(--primary-dark);
+}
+
+.el-button--default {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.el-button--default:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface-hover);
+}
+
+.el-checkbox__label {
+  color: var(--text-muted) !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.el-dialog {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card) !important;
+}
+
+.el-dialog__title {
+  color: var(--text) !important;
+}
+
+.el-message-box {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.el-message-box__content {
+  color: var(--text) !important;
+}

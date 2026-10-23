@@ -1,0 +1,33 @@
+# docker-compose 编排文件
+# 注意：Ollama 和 ComfyUI 通常在本机运行（需要 GPU），这里假设通过 host.docker.internal 访问
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: character_agent
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - COMFYUI_URL=http://host.docker.internal:8188
+      - OLLAMA_MODEL=qwen3:32b
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8000
+      - MAX_CONCURRENT_TASKS=2
+      - RATE_LIMIT_PER_MINUTE=30
+      - RATE_LIMIT_GENERATE_PER_HOUR=20
+      - JWT_SECRET=change_me_in_production
+      - JWT_EXPIRE_HOURS=24
+    volumes:
+      - ./output:/app/output
+      - ./static:/app/static
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

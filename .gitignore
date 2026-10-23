@@ -1,0 +1,40 @@
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ============ Node / 前端 ============
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+npm-debug.log*
+yarn-error.log*
+
+# ============ 运行时数据 ============
+# 生成的提示词 / 剧照 / 修图结果 / 导出文件 / 日志 / 任务数据库
+output/
+logs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# ============ 密钥与环境变量 ============
+.env
+.env.*
+!.env.example
+
+# ============ 本地工具 / 缓存 ============
+_edge_profile/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp
+.tmp_*

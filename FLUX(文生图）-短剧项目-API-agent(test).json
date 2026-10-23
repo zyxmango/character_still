@@ -1,0 +1,178 @@
+{
+  "1": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "2": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "3": {
+    "inputs": {
+      "guidance": 8,
+      "conditioning": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "4": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "5": {
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 31858097093698,
+      "steps": 25,
+      "cfg": 0.8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "10",
+        0
+      ],
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "Modern elements, modern shoes, clothes not covering shoulders, exposing neck, collarbone and shoulders, revealing clothing, low neckline, sexy style, weird body proportions, poor image quality, deformed fingers, extra fingers, watermark, nsfw, strange fingers.",
+      "clip": [
+        "10",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "8": {
+    "inputs": {
+      "clip_l": [
+        "17",
+        0
+      ],
+      "t5xxl": [
+        "17",
+        0
+      ],
+      "guidance": 3.5,
+      "clip": [
+        "10",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIP文本编码（Flux）"
+    }
+  },
+  "10": {
+    "inputs": {
+      "lora_name": "F.1-古风小说推文（堪比niji）_v2.0.safetensors",
+      "strength_model": 0.8,
+      "strength_clip": 1,
+      "model": [
+        "5",
+        0
+      ],
+      "clip": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载LoRA"
+    }
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "绘本",
+      "images": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "12": {
+    "inputs": {
+      "width": 720,
+      "height": 1280,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  },
+  "17": {
+    "inputs": {
+      "text": "full-body standing Chinese anime character, a cold and elegant young man, slender and tall figure, long black hair half tied into a high ponytail, ribbon blowing in the wind, a few loose strands on cheeks, phoenix eyes, indifferent expression, fair skin, moon-white wide-sleeve ancient robe with dark patterns, light silver-grey outer gauze cloak, jade tassel belt, black cloud-pattern boots, holding a plain long sword, standing calmly in misty mountains and ink-wash landscape, warm dusk light from behind, flowing clothes and hair, Chinese style anime, delicate line art, soft lighting, cinematic composition, full body portrait, complete feet, centered figure, proportional body, ultra detailed."
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Text Multiline"
+    }
+  }
+}

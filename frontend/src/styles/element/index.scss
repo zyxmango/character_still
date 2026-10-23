@@ -1,0 +1,18 @@
+// Element Plus 主题变量覆盖（墨韵丹青 · 精炼版）
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': ('base': #c8412c),
+    'success': ('base': #6b9b6e),
+    'warning': ('base': #c9a961),
+    'danger': ('base': #d4574a),
+    'error': ('base': #d4574a),
+    'info': ('base': #8e8e93),
+  ),
+  $border-radius: (
+    'base': 6px,
+    'small': 4px,
+    'round': 16px,
+    'circle': 100%,
+  ),
+);
