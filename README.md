@@ -9,8 +9,20 @@
 - 提示词规则集中在一个 Markdown 的 YAML 配置块里，改风格不用改代码
 
 ---
-界面展示：
 
+## 界面展示
+
+| 提示词生成 | 系统监控 |
+|:---:|:---:|
+| <img src="docs/images/界面展示/interface-01.png" alt="提示词生成界面" width="100%"> | <img src="docs/images/界面展示/interface-02.png" alt="系统监控界面" width="100%"> |
+| 任务列表 | 全流程任务 |
+| <img src="docs/images/界面展示/interface-03.png" alt="任务列表界面" width="100%"> | <img src="docs/images/界面展示/interface-04.png" alt="全流程任务界面" width="100%"> |
+| 条件修图 | 提示词工程配置 |
+| <img src="docs/images/界面展示/interface-05.png" alt="条件修图界面" width="100%"> | <img src="docs/images/界面展示/interface-06.png" alt="提示词工程配置界面" width="100%"> |
+| FLUX 文生图工作流 | Qwen 图像编辑工作流 |
+| <img src="docs/images/界面展示/interface-07.png" alt="FLUX 文生图 ComfyUI 工作流" width="100%"> | <img src="docs/images/界面展示/interface-08.png" alt="Qwen 图像编辑 ComfyUI 工作流" width="100%"> |
+| 剧照预览 | 图片画廊 |
+| <img src="docs/images/界面展示/interface-09.png" alt="剧照预览界面" width="100%"> | <img src="docs/images/界面展示/interface-10.png" alt="图片画廊界面" width="100%"> |
 
 
 ## 目录
