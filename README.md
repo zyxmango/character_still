@@ -9,6 +9,9 @@
 - 提示词规则集中在一个 Markdown 的 YAML 配置块里，改风格不用改代码
 
 ---
+界面展示：
+[sunlogin_20261112084542(1).bmp](https://github.com/user-attachments/files/34722184/sunlogin_20261112084542.1.bmp)
+
 
 ## 目录
 
