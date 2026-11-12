@@ -10,7 +10,7 @@
 
 ---
 界面展示：
-[sunlogin_20261112084542(1).bmp](https://github.com/user-attachments/files/34722184/sunlogin_20261112084542.1.bmp)
+
 
 
 ## 目录
